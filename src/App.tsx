@@ -8,7 +8,6 @@ import {
   ArrowRight,
   ArrowDown,
   ExternalLink,
-  Download,
   Code2,
   Box,
   Cloud,
