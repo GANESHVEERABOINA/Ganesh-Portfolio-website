@@ -7,3 +7,4 @@ export default defineConfig({
   // ఇది చాలా ముఖ్యం: మీ GitHub Repository పేరు ఇక్కడ కరెక్ట్ గా ఉండాలి
   base: '/Ganesh-Portfolio-website/', 
 })
+// fresh commit to clear artifacts
