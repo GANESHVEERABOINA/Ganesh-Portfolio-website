@@ -11,6 +11,6 @@ export const projectsData = [
       "Successfully deployed the application on AWS EC2."
     ],
     technologies: ["Jenkins", "Docker", "AWS EC2", "Maven", "Apache Tomcat", "GitHub"],
-    githubUrl: "#" // Add your GitHub repository link here
+    githubUrl: "https://github.com/GANESHVEERABOINA/devops-cicd-project.git" // Add your GitHub repository link here
   }
 ];
