@@ -238,7 +238,6 @@ export default function App() {
           </div>
 
           <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
-            
             {/* Terminal Window (Left) */}
             <div className="flex-1 bg-[#050505] border border-white/20 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.8)] hover:border-white/40 transition-all duration-500 group">
               <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex items-center gap-2">
@@ -296,7 +295,6 @@ export default function App() {
                 </div>
               </div>
             </div>
-
           </div>
         </motion.section>
 
@@ -374,9 +372,17 @@ export default function App() {
                            ${isDimmed ? 'opacity-30 scale-95' : 'opacity-100'}`}
                      >
                         <div className={`mb-4 p-3.5 rounded-xl border transition-all duration-300
-                           ${isHovered ? 'text-white bg-white/20 border-white shadow-[0_0_20px_rgba(255,255,255,0.8)]' : 'text-white bg-white/10 border-white/30'}`} 
+                           ${isHovered ? 'bg-white/20 border-white shadow-[0_0_20px_rgba(255,255,255,0.8)]' : 'bg-white/5 border-white/30'}`} 
                            style={{ transform: "translateZ(30px)" }}>
-                           {getIconForCategory(node.category)}
+                           {/* Icon color handled manually since getIconForCategory uses text-white */}
+                           {node.category.includes('Cloud') ? <Cloud size={26} color="white" /> : 
+                            node.category.includes('Containers') ? <Box size={26} color="white" /> : 
+                            node.category.includes('CI/CD') ? <GitBranch size={26} color="white" /> : 
+                            node.category.includes('IaC') ? <Code2 size={26} color="white" /> : 
+                            node.category.includes('Quality') ? <ShieldCheck size={26} color="white" /> : 
+                            node.category.includes('Artifacts') ? <Package size={26} color="white" /> : 
+                            node.category.includes('OS') ? <Terminal size={26} color="white" /> : 
+                            <Server size={26} color="white" />}
                         </div>
                         
                         <h4 className="text-white font-extrabold text-[12px] text-center mb-3 leading-tight uppercase tracking-wider h-6 flex items-center justify-center drop-shadow-xl" style={{ transform: "translateZ(40px)" }}>
@@ -441,12 +447,12 @@ export default function App() {
             <h3 className="text-4xl font-black text-white">Experience</h3>
             <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="grid grid-cols-1 gap-8 w-full">
+          <div className="grid grid-cols-1 gap-8 w-full max-w-5xl mx-auto">
             {experienceData.map((exp, idx) => (
-              <div key={idx} className="relative bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl rounded-3xl p-8 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300">
+              <div key={idx} className="relative bg-[#050505] border border-white/10 shadow-2xl rounded-3xl p-8 hover:border-white/30 transition-all duration-500">
                 <div className="flex flex-col md:flex-row gap-6 mb-8 items-start md:items-center">
                   <div className="shrink-0 hidden sm:flex">
-                    <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center p-2 border border-white/10 shadow-inner">
+                    <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center p-2 border border-white/20 shadow-inner">
                       {/* @ts-ignore */}
                       {exp.logo ? <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain rounded-xl" /> : <Briefcase className="text-white" size={32} />}
                     </div>
@@ -454,22 +460,22 @@ export default function App() {
                   <div className="flex-1 flex flex-col md:flex-row md:justify-between md:items-center w-full gap-4">
                     <div>
                       <h4 className="text-2xl font-black text-white">{exp.role}</h4>
-                      <p className="text-white font-bold text-lg mt-1">{exp.company}</p>
+                      <p className="text-white/80 font-bold text-lg mt-1">{exp.company}</p>
                     </div>
-                    <div className="text-white font-mono text-sm bg-white/5 px-4 py-2 rounded-xl border border-white/10 w-fit">
+                    <div className="text-white font-mono text-sm bg-white/5 px-4 py-2 rounded-xl border border-white/20 w-fit">
                       <p>{exp.duration}</p>
-                      <p className="text-white/80 mt-0.5">{exp.location}</p>
+                      <p className="text-white/60 mt-0.5">{exp.location}</p>
                     </div>
                   </div>
                 </div>
-                <ul className="list-disc list-outside ml-5 space-y-3 text-white mb-8 text-lg">
+                <ul className="list-disc list-outside ml-5 space-y-3 text-white/90 mb-8 text-lg">
                   {exp.responsibilities.map((resp, i) => (
                     <li key={i} className="pl-2 leading-relaxed">{resp}</li>
                   ))}
                 </ul>
                 <div className="flex flex-wrap gap-2 pt-6 border-t border-white/10">
                   {exp.technologies.map((tech, i) => (
-                    <span key={i} className="text-sm font-bold bg-white/10 border border-white/10 text-white px-4 py-1.5 rounded-full shadow-sm">{tech}</span>
+                    <span key={i} className="text-sm font-bold bg-white/10 border border-white/20 text-white px-4 py-1.5 rounded-full shadow-[0_0_5px_rgba(255,255,255,0.05)]">{tech}</span>
                   ))}
                 </div>
               </div>
@@ -487,8 +493,7 @@ export default function App() {
             <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
 
-          <div className="relative w-full bg-[#030303] border border-white/10 shadow-2xl rounded-[2rem] p-5 lg:p-8 overflow-hidden">
-            
+          <div className="relative w-full max-w-7xl mx-auto bg-[#030303] border border-white/10 shadow-2xl rounded-[2rem] p-5 lg:p-8 overflow-hidden">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
             
             <div className="absolute top-5 left-5 md:top-6 md:left-6 flex items-center gap-3 bg-black/80 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-md z-20 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
@@ -503,7 +508,6 @@ export default function App() {
                   <div className="xl:w-[40%]">
                      <ArchZone title="Infrastructure & Configuration" steps={allSteps.slice(9, 12)} startIndex={9} endIndex={11} />
                   </div>
-                  
                   <div className="xl:w-[60%]">
                      <ArchZone title="Deployment Pipeline (K8s Cluster)" steps={allSteps.slice(12, 17)} startIndex={12} endIndex={16} />
                   </div>
@@ -520,22 +524,22 @@ export default function App() {
             <h3 className="text-4xl font-black text-white">Certifications</h3>
             <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
             {/* @ts-ignore */}
             {certificationsData.map((cert, idx) => (
-              <div key={idx} className="group relative bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl p-6 flex flex-col items-center text-center overflow-hidden hover:bg-white/10 hover:border-white/20 hover:-translate-y-2 transition-all duration-500">
+              <div key={idx} className="group relative bg-[#050505] border border-white/10 shadow-2xl rounded-3xl p-6 flex flex-col items-center text-center overflow-hidden hover:border-white/30 hover:-translate-y-2 transition-all duration-500">
                 <div className="absolute top-4 right-4 bg-white/5 border border-white/10 text-white text-[10px] font-mono px-2 py-1 rounded-full backdrop-blur-md">{cert.date}</div>
                 <div className="relative w-20 h-20 mb-5 mt-3 group-hover:scale-105 transition-transform duration-500">
                   <div className="absolute inset-0 bg-white/10 blur-[20px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative w-full h-full bg-white/5 border border-white/20 rounded-full flex justify-center items-center shadow-inner overflow-hidden">
                     {/* @ts-ignore */}
-                    <img src={cert.image || "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"} alt={cert.name} className="w-full h-full object-cover rounded-full" />
+                    <img src={cert.image || "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"} alt={cert.name} className="w-full h-full object-cover rounded-full p-2" />
                   </div>
                 </div>
                 <h4 className="text-white font-bold text-base leading-snug mb-2">{cert.name}</h4>
-                <p className="text-white text-[10px] uppercase tracking-widest font-semibold mb-6">{cert.issuer}</p>
+                <p className="text-white/60 text-[10px] uppercase tracking-widest font-semibold mb-6">{cert.issuer}</p>
                 {/* @ts-ignore */}
-                <a href={cert.link || "#"} target="_blank" rel="noreferrer" className="mt-auto w-full flex justify-center items-center gap-2 text-xs font-bold text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl px-4 py-2.5 transition-all duration-300 shadow-[0_0_10px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                <a href={cert.link || "#"} target="_blank" rel="noreferrer" className="mt-auto w-full flex justify-center items-center gap-2 text-xs font-bold text-white bg-white/5 border border-white/10 hover:border-white/40 hover:bg-white/10 rounded-xl px-4 py-2.5 transition-all duration-300 shadow-[0_0_10px_rgba(255,255,255,0.05)] group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
                   View Credential <ExternalLink size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </a>
               </div>
@@ -549,7 +553,7 @@ export default function App() {
             <h3 className="text-4xl font-black text-white">Featured Projects</h3>
             <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="grid grid-cols-1 gap-8 w-full">
+          <div className="grid grid-cols-1 gap-8 w-full max-w-6xl mx-auto">
             {projectsData.map((project, idx) => (
               <div key={idx} className="bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl rounded-3xl p-8 hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                 <div className="flex justify-between items-start mb-4">
@@ -577,7 +581,7 @@ export default function App() {
             <h3 className="text-4xl font-black text-white text-center">Selected Repositories</h3>
             <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto">
             {repositoriesData.map((repo, idx) => (
               <div key={idx} className="bg-white/5 backdrop-blur-md border border-white/10 shadow-lg rounded-2xl p-6 hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
                 <div className="flex justify-between items-start mb-3">
@@ -604,20 +608,30 @@ export default function App() {
 
         {/* Education Section */}
         <motion.section id="education" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
-          <div className="flex flex-col items-center mb-12">
+          <div className="flex flex-col items-center mb-16">
             <h3 className="text-4xl font-black text-white">Education</h3>
             <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="w-full space-y-6">
+          
+          <div className="relative border-l-2 border-white/20 ml-4 md:ml-8 space-y-12 pb-4 max-w-5xl mx-auto">
             {educationData.map((edu, idx) => (
-              <div key={idx} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center hover:bg-white/10 hover:border-white/20 transition-colors">
-                <div>
-                  <h4 className="text-xl font-bold text-white">{edu.degree}</h4>
-                  <p className="text-white font-medium mt-1">{edu.institution}</p>
-                  {edu.details && <p className="text-white mt-2 text-sm">{edu.details}</p>}
-                </div>
-                <div className="mt-4 md:mt-0 text-white font-mono text-sm bg-white/5 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/10">
-                  {edu.duration}
+              <div key={idx} className="relative pl-8 md:pl-12 group">
+                
+                {/* Glowing Dot on Timeline */}
+                <div className="absolute -left-[9px] top-1.5 w-4 h-4 bg-black border-2 border-white/50 rounded-full group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,1)] transition-all duration-500"></div>
+
+                {/* Content Box */}
+                <div className="bg-[#050505] border border-white/10 p-6 md:p-8 rounded-2xl hover:border-white/30 transition-all duration-500 shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                    <div>
+                      <h4 className="text-xl md:text-2xl font-black text-white tracking-wide">{edu.degree}</h4>
+                      <p className="text-white/80 font-bold mt-1 uppercase text-xs md:text-sm tracking-widest">{edu.institution}</p>
+                    </div>
+                    <span className="px-4 py-1.5 border border-white/20 bg-white/5 text-white text-xs font-mono rounded-full whitespace-nowrap">
+                      {edu.duration}
+                    </span>
+                  </div>
+                  {edu.details && <p className="text-white/70 text-sm md:text-base leading-relaxed mt-4">{edu.details}</p>}
                 </div>
               </div>
             ))}
@@ -630,11 +644,26 @@ export default function App() {
             <h3 className="text-3xl font-black text-white">Currently Learning</h3>
             <div className="w-16 h-1 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="flex flex-wrap justify-center gap-4 w-full">
+          <div className="flex flex-wrap justify-center gap-4 w-full max-w-4xl mx-auto">
             {learningData.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 text-white px-5 py-3 rounded-full hover:bg-white/10 hover:border-white/20 transition-colors">
-                <Activity size={16} className="text-white" />
-                <span className="font-medium text-sm">{item}</span>
+              <div key={idx} className="group relative bg-[#0a0a0a] border border-white/10 p-5 rounded-2xl overflow-hidden hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-500 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33%-1rem)]">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-[1.5s] ease-in-out"></div>
+                <div className="flex items-center gap-4 relative z-10">
+                  <div className="relative flex items-center justify-center w-12 h-12 bg-black border border-white/20 rounded-xl group-hover:border-white/50 transition-colors">
+                    <div className="absolute inset-0 rounded-xl border border-transparent border-t-white/60 animate-spin" style={{ animationDuration: '3s' }}></div>
+                    <Terminal size={20} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-white text-sm font-bold tracking-wide leading-snug">{item}</h4>
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                      </span>
+                      <span className="text-white/60 text-[10px] font-mono uppercase tracking-widest">Processing...</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -643,19 +672,22 @@ export default function App() {
       </main>
 
       {/* Footer / Contact */}
-      <footer id="contact" className="bg-black py-16 mt-20 relative">
+      <footer id="contact" className="bg-black py-16 mt-10 relative">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
-        <div className="w-full px-6 md:px-12 lg:px-20 text-center">
+        <div className="w-full px-6 md:px-12 lg:px-20 text-center flex flex-col items-center">
           <h3 className="text-4xl font-black text-white mb-6">Let's Connect</h3>
-          <p className="text-white mb-10 text-lg">
-            Currently seeking entry-level DevOps/Cloud opportunities. Let's build something great together.
+          <p className="text-white/80 mb-10 text-lg">
+            Currently seeking entry-level DevOps & Cloud opportunities. Let's build something great together.
           </p>
-          <div className="flex justify-center gap-6 mb-12">
-            <a href="mailto:ganeshveeraboina.pro@gmail.com" className="bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 hover:border-white/40 hover:scale-110 p-4 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all"><Mail size={24} /></a>
-            <a href="https://github.com/GANESHVEERABOINA" className="bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 hover:border-white/40 hover:scale-110 p-4 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
-            <a href="https://linkedin.com/in/ganesh-veeraboina" className="bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 hover:border-white/40 hover:scale-110 p-4 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+          <div className="flex justify-center gap-6 mb-16">
+            <a href="mailto:ganeshveeraboina.pro@gmail.com" className="bg-[#0a0a0a] border border-white/20 text-white hover:bg-white/10 hover:border-white/50 hover:scale-110 p-4 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all"><Mail size={24} /></a>
+            <a href="https://github.com/GANESHVEERABOINA" className="bg-[#0a0a0a] border border-white/20 text-white hover:bg-white/10 hover:border-white/50 hover:scale-110 p-4 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            </a>
+            <a href="https://linkedin.com/in/ganesh-veeraboina" className="bg-[#0a0a0a] border border-white/20 text-white hover:bg-white/10 hover:border-white/50 hover:scale-110 p-4 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
           </div>
-          <p className="text-white font-medium font-mono text-sm">© {new Date().getFullYear()} {profileData.name}. All rights reserved.</p>
+
+          <p className="text-white font-medium font-mono text-sm opacity-50">© {new Date().getFullYear()} Ganesh Veeraboina. All rights reserved.</p>
         </div>
       </footer>
     </div>
