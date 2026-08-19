@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Mail, BookOpen, FileText, Activity, 
+  Mail, BookOpen, FileText, 
   ExternalLink, Code2, Box, Cloud, Server, Briefcase,
   Cpu, Settings, Terminal, GitBranch, 
-  Hexagon, ShieldAlert, Layers,
+  Hexagon, ShieldAlert, Layers, ShieldCheck,
   SearchCheck, Package, Blocks, Rocket, 
   TrendingUp, Flame, PieChart, Database, FileSearch,
-  User, PlayCircle, GitPullRequest, Globe, ArrowRight, ShieldCheck
+  User, PlayCircle, GitPullRequest, Globe, ArrowRight
 } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
@@ -212,7 +212,9 @@ export default function App() {
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex gap-4 justify-center md:justify-start pt-2">
               <a href="https://linkedin.com/in/ganesh-veeraboina" target="_blank" rel="noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white p-3 rounded-full hover:scale-110 hover:bg-white/20 transition-all shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-              <a href="https://github.com/GANESHVEERABOINA" target="_blank" rel="noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white p-3 rounded-full hover:scale-110 hover:bg-white/20 transition-all shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
+              <a href="https://github.com/GANESHVEERABOINA" target="_blank" rel="noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white p-3 rounded-full hover:scale-110 hover:bg-white/20 transition-all shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+              </a>
               <a href="mailto:ganeshveeraboina.pro@gmail.com" target="_blank" rel="noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white p-3 rounded-full hover:scale-110 hover:bg-white/20 transition-all shadow-lg"><Mail size={20} strokeWidth={2.5} /></a>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }} className="pt-4 flex flex-wrap gap-4 justify-center md:justify-start">
@@ -374,7 +376,6 @@ export default function App() {
                         <div className={`mb-4 p-3.5 rounded-xl border transition-all duration-300
                            ${isHovered ? 'bg-white/20 border-white shadow-[0_0_20px_rgba(255,255,255,0.8)]' : 'bg-white/5 border-white/30'}`} 
                            style={{ transform: "translateZ(30px)" }}>
-                           {/* Icon color handled manually since getIconForCategory uses text-white */}
                            {node.category.includes('Cloud') ? <Cloud size={26} color="white" /> : 
                             node.category.includes('Containers') ? <Box size={26} color="white" /> : 
                             node.category.includes('CI/CD') ? <GitBranch size={26} color="white" /> : 
@@ -422,7 +423,7 @@ export default function App() {
                       
                       <div className="bg-black border border-white/20 rounded-2xl p-5 shadow-lg w-full relative z-10 active:border-white transition-colors">
                          <div className="flex items-center gap-4 mb-4">
-                            <div className="text-white bg-white/10 p-2.5 rounded-xl border border-white/20">
+                            <div className="bg-white/10 p-2.5 rounded-xl border border-white/20">
                                {getIconForCategory(node.category)}
                             </div>
                             <h4 className="text-white font-extrabold text-[13px] uppercase tracking-widest leading-tight">{node.category}</h4>
@@ -547,25 +548,31 @@ export default function App() {
           </div>
         </motion.section>
 
-        {/* Featured Projects Section */}
+        {/* 🌟 NEW PROJECTS SECTION (Hacker / Glass Cards) 🌟 */}
         <motion.section id="projects" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
           <div className="flex flex-col items-center mb-12">
             <h3 className="text-4xl font-black text-white">Featured Projects</h3>
             <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="grid grid-cols-1 gap-8 w-full max-w-6xl mx-auto">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto">
             {projectsData.map((project, idx) => (
-              <div key={idx} className="bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl rounded-3xl p-8 hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                <div className="flex justify-between items-start mb-4">
-                  <h4 className="text-2xl font-black text-white">{project.title}</h4>
-                  <a href={project.githubUrl} className="text-white hover:text-white transition-colors">
+              <div key={idx} className="group relative bg-[#050505] border border-white/10 p-8 rounded-3xl hover:border-white/40 transition-all duration-500 overflow-hidden shadow-xl hover:shadow-[0_10px_40px_rgba(255,255,255,0.1)] hover:-translate-y-1">
+                
+                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                
+                <div className="flex justify-between items-start mb-6 relative z-10">
+                  <h4 className="text-2xl font-black text-white group-hover:scale-[1.02] origin-left transition-transform duration-300">{project.title}</h4>
+                  <a href={project.githubUrl} target="_blank" rel="noreferrer" className="text-white/50 hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
                   </a>
                 </div>
-                <p className="text-white mb-6 text-lg">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
+                
+                <p className="text-white/80 leading-relaxed mb-8 relative z-10">{project.description}</p>
+                
+                <div className="flex flex-wrap gap-2 mt-auto relative z-10">
                   {project.technologies.map((tech, i) => (
-                    <span key={i} className="text-sm font-bold bg-white/10 border border-white/10 text-white px-3 py-1 rounded-full shadow-[0_0_5px_rgba(255,255,255,0.1)]">
+                    <span key={i} className="text-xs font-bold bg-white/5 border border-white/20 text-white px-3 py-1.5 rounded-full">
                       {tech}
                     </span>
                   ))}
@@ -575,7 +582,7 @@ export default function App() {
           </div>
         </motion.section>
 
-        {/* Selected Repositories */}
+        {/* Selected Repositories (Adjusted Style) */}
         <motion.section id="repositories" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
           <div className="flex flex-col items-center mb-12">
             <h3 className="text-4xl font-black text-white text-center">Selected Repositories</h3>
@@ -583,20 +590,20 @@ export default function App() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto">
             {repositoriesData.map((repo, idx) => (
-              <div key={idx} className="bg-white/5 backdrop-blur-md border border-white/10 shadow-lg rounded-2xl p-6 hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+              <div key={idx} className="group relative bg-[#050505] border-l-4 border-l-white/20 border-y border-r border-white/10 p-6 rounded-r-2xl hover:border-l-white transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex items-center gap-2 text-white font-bold text-lg">
-                    <BookOpen size={20} className="text-white" />
+                    <BookOpen size={20} className="text-white/70 group-hover:text-white transition-colors" />
                     {repo.title}
                   </div>
-                  <a href={repo.githubUrl} className="text-white hover:text-white transition-colors">
+                  <a href={repo.githubUrl} target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors">
                     <ExternalLink size={18} />
                   </a>
                 </div>
-                <p className="text-white mb-5 text-sm">{repo.description}</p>
+                <p className="text-white/70 mb-5 text-sm leading-relaxed">{repo.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {repo.technologies.map((tech, i) => (
-                    <span key={i} className="text-xs font-mono text-white bg-white/10 px-2 py-1 rounded border border-white/10">
+                    <span key={i} className="text-[10px] font-mono font-bold text-white bg-white/10 px-2.5 py-1 rounded">
                       {tech}
                     </span>
                   ))}
@@ -606,7 +613,7 @@ export default function App() {
           </div>
         </motion.section>
 
-        {/* Education Section */}
+        {/* 🌟 NEW EDUCATION SECTION (Vertical Timeline) 🌟 */}
         <motion.section id="education" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
           <div className="flex flex-col items-center mb-16">
             <h3 className="text-4xl font-black text-white">Education</h3>
@@ -638,18 +645,23 @@ export default function App() {
           </div>
         </motion.section>
 
-        {/* Currently Learning Section */}
+        {/* 🌟 NEW CURRENTLY LEARNING (Active Processes) 🌟 */}
         <motion.section id="learning" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
           <div className="flex flex-col items-center mb-12">
-            <h3 className="text-3xl font-black text-white">Currently Learning</h3>
-            <div className="w-16 h-1 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+            <h3 className="text-4xl font-black text-white">Currently Learning</h3>
+            <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="flex flex-wrap justify-center gap-4 w-full max-w-4xl mx-auto">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
             {learningData.map((item, idx) => (
-              <div key={idx} className="group relative bg-[#0a0a0a] border border-white/10 p-5 rounded-2xl overflow-hidden hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-500 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33%-1rem)]">
+              <div key={idx} className="group relative bg-[#0a0a0a] border border-white/10 p-5 rounded-2xl overflow-hidden hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-500">
+                
+                {/* Scanning line effect */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-[1.5s] ease-in-out"></div>
+
                 <div className="flex items-center gap-4 relative z-10">
                   <div className="relative flex items-center justify-center w-12 h-12 bg-black border border-white/20 rounded-xl group-hover:border-white/50 transition-colors">
+                    {/* Rotating border to simulate processing */}
                     <div className="absolute inset-0 rounded-xl border border-transparent border-t-white/60 animate-spin" style={{ animationDuration: '3s' }}></div>
                     <Terminal size={20} className="text-white" />
                   </div>
