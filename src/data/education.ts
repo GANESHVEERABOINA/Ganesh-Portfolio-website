@@ -6,10 +6,16 @@ export const educationData = [
     details: "Currently building practical skills in computer science and exploring technologies through self-learning and hands-on practice."
   },
   {
-    institution: "Sri Pragathi Jr College",
+    institution: "Sri Pragathi Jr College, Komarole",
     degree: "Board intermediate education, MPC",
     duration: "Jun 2021 - Apr 2023",
     details: "Grade: 61.3%"
+  },
+  {
+    institution: "SBNRM High School, Kothapalli",
+    degree: "Board Secondary education",
+    duration: "Jun 2016 - Feb 2021",
+    details: "Grade: 10.0 CGPA"
   }
 ];
 
