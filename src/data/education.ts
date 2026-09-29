@@ -4,7 +4,7 @@ export const educationData = [
     degree: "B.Sc., Computer Science",
     duration: "Aug 2023 - Apr 2026",
     details: "Currently building practical skills in computer science and exploring technologies through self-learning and hands-on practice.",
-    logo: "https://i.ibb.co/68Z4KZY/image-3829fe.jpg" 
+    logo: "/assets/aku-logo.png" 
   }
 ];
 export const certificationsData = [
