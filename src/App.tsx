@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Mail, BookOpen, FileText, 
-  ExternalLink, Code2, Box, Cloud, Server, Briefcase,
-  Cpu, Settings, Terminal, GitBranch, 
-  Hexagon, ShieldAlert, Layers, ShieldCheck,
-  SearchCheck, Package, Blocks, Rocket, 
-  TrendingUp, Flame, PieChart, Database, FileSearch,
-  User, PlayCircle, GitPullRequest, Globe, ArrowRight
+  ArrowRight, Blocks, BookOpen, Box, Briefcase, Cloud, Code2, Cpu, Database, 
+  ExternalLink, FileSearch, FileText, Flame, GitBranch, GitPullRequest, Globe, 
+  Hexagon, Layers, Mail, Package, PieChart, PlayCircle, Rocket, SearchCheck, 
+  Server, Settings, ShieldAlert, ShieldCheck, Terminal, TrendingUp, User
 } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
@@ -74,16 +71,16 @@ export default function App() {
 
   const getIconForCategory = (category: string) => {
     const lowerCat = category.toLowerCase();
-    if (lowerCat.includes('cloud')) return <Cloud className="text-white" size={26} />;
-    if (lowerCat.includes('container') || lowerCat.includes('orchestration')) return <Box className="text-white" size={26} />;
-    if (lowerCat.includes('ci/cd') || lowerCat.includes('git')) return <GitBranch className="text-white" size={26} />;
-    if (lowerCat.includes('iac') || lowerCat.includes('code')) return <Code2 className="text-white" size={26} />;
-    if (lowerCat.includes('config')) return <Settings className="text-white" size={26} />;
-    if (lowerCat.includes('os') || lowerCat.includes('script')) return <Terminal className="text-white" size={26} />;
-    if (lowerCat.includes('artifacts') || lowerCat.includes('registry')) return <Package className="text-white" size={26} />;
-    if (lowerCat.includes('quality') || lowerCat.includes('sec')) return <ShieldCheck className="text-white" size={26} />;
-    if (lowerCat.includes('build') || lowerCat.includes('server')) return <Server className="text-white" size={26} />;
-    return <Cpu className="text-white" size={26} />;
+    if (lowerCat.includes('cloud')) return <Cloud className="text-white transition-colors duration-300" size={26} />;
+    if (lowerCat.includes('container') || lowerCat.includes('orchestration')) return <Box className="text-white transition-colors duration-300" size={26} />;
+    if (lowerCat.includes('ci/cd') || lowerCat.includes('git')) return <GitBranch className="text-white transition-colors duration-300" size={26} />;
+    if (lowerCat.includes('iac') || lowerCat.includes('code')) return <Code2 className="text-white transition-colors duration-300" size={26} />;
+    if (lowerCat.includes('config')) return <Settings className="text-white transition-colors duration-300" size={26} />;
+    if (lowerCat.includes('os') || lowerCat.includes('script')) return <Terminal className="text-white transition-colors duration-300" size={26} />;
+    if (lowerCat.includes('artifacts') || lowerCat.includes('registry')) return <Package className="text-white transition-colors duration-300" size={26} />;
+    if (lowerCat.includes('quality') || lowerCat.includes('sec')) return <ShieldCheck className="text-white transition-colors duration-300" size={26} />;
+    if (lowerCat.includes('build') || lowerCat.includes('server')) return <Server className="text-white transition-colors duration-300" size={26} />;
+    return <Cpu className="text-white transition-colors duration-300" size={26} />;
   };
 
   // 🌟 PIPELINE STEPS 🌟
@@ -376,6 +373,7 @@ export default function App() {
                         <div className={`mb-4 p-3.5 rounded-xl border transition-all duration-300
                            ${isHovered ? 'bg-white/20 border-white shadow-[0_0_20px_rgba(255,255,255,0.8)]' : 'bg-white/5 border-white/30'}`} 
                            style={{ transform: "translateZ(30px)" }}>
+                           {/* Icon color handled manually since getIconForCategory uses text-white */}
                            {node.category.includes('Cloud') ? <Cloud size={26} color="white" /> : 
                             node.category.includes('Containers') ? <Box size={26} color="white" /> : 
                             node.category.includes('CI/CD') ? <GitBranch size={26} color="white" /> : 
@@ -630,15 +628,25 @@ export default function App() {
                 {/* Content Box */}
                 <div className="bg-[#050505] border border-white/10 p-6 md:p-8 rounded-2xl hover:border-white/30 transition-all duration-500 shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                    <div>
-                      <h4 className="text-xl md:text-2xl font-black text-white tracking-wide">{edu.degree}</h4>
-                      <p className="text-white/80 font-bold mt-1 uppercase text-xs md:text-sm tracking-widest">{edu.institution}</p>
+                    <div className="flex items-center gap-4">
+                      {/* 🌟 UNIVERSITY LOGO INTEGRATION 🌟 */}
+                      {/* @ts-ignore */}
+                      {edu.logo && (
+                        <div className="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-xl border border-white/20 p-1 flex items-center justify-center shrink-0 group-hover:border-white/50 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all">
+                          {/* @ts-ignore */}
+                          <img src={edu.logo} alt={edu.institution} className="w-full h-full object-contain rounded-lg" />
+                        </div>
+                      )}
+                      <div>
+                        <h4 className="text-xl md:text-2xl font-black text-white tracking-wide">{edu.degree}</h4>
+                        <p className="text-white/80 font-bold mt-1 uppercase text-xs md:text-sm tracking-widest">{edu.institution}</p>
+                      </div>
                     </div>
                     <span className="px-4 py-1.5 border border-white/20 bg-white/5 text-white text-xs font-mono rounded-full whitespace-nowrap">
                       {edu.duration}
                     </span>
                   </div>
-                  {edu.details && <p className="text-white/70 text-sm md:text-base leading-relaxed mt-4">{edu.details}</p>}
+                  {edu.details && <p className="text-white/70 text-sm md:text-base leading-relaxed mt-4 ml-[4rem] md:ml-[4.5rem]">{edu.details}</p>}
                 </div>
               </div>
             ))}
