@@ -689,22 +689,6 @@ export default function App() {
           </div>
         </motion.section>
 
-        {/* 🌟 SIGNATURE (Bottom Right) 🌟 */}
-        <div className="w-full flex justify-end mt-12 mb-8 pr-4 md:pr-8">
-          <style>
-            {`@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');`}
-          </style>
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-white text-4xl md:text-5xl antialiased drop-shadow-[0_0_10px_rgba(255,255,255,0.4)] hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.8)] transition-all duration-300 cursor-default" 
-            style={{ fontFamily: "'Alex Brush', cursive", fontWeight: 400 }}
-          >
-            Ganesh Veeraboina
-          </motion.div>
-        </div>
-
       </main>
 
       {/* Footer / Contact */}
