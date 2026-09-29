@@ -216,7 +216,7 @@ export default function App() {
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }} className="pt-4 flex flex-wrap gap-4 justify-center md:justify-start">
               <a href="#projects" className="inline-flex items-center justify-center bg-white/10 backdrop-blur-lg border border-white/20 text-white font-semibold text-sm px-6 py-3 rounded-full hover:scale-105 hover:bg-white/20 transition-all shadow-[0_4px_30px_rgba(255,255,255,0.1)]">View My Projects</a>
-              <a href="/resume/Ganesh-Veeraboina-Resume.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 bg-white/5 backdrop-blur-lg border border-white/10 text-white font-semibold text-sm px-6 py-3 rounded-full hover:scale-105 hover:bg-white/20 transition-all shadow-[0_4px_30px_rgba(255,255,255,0.1)]"><FileText size={18} />View My Resume</a>
+              <a href="./GANESH-RESUME-V3.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 bg-white/5 backdrop-blur-lg border border-white/10 text-white font-semibold text-sm px-6 py-3 rounded-full hover:scale-105 hover:bg-white/20 transition-all shadow-[0_4px_30px_rgba(255,255,255,0.1)]"><FileText size={18} />View My Resume</a>
             </motion.div>
           </div>
           <div className="w-full md:w-1/2 flex justify-center items-end relative h-[400px] md:h-[650px] z-10">
@@ -688,6 +688,22 @@ export default function App() {
             ))}
           </div>
         </motion.section>
+
+        {/* 🌟 SIGNATURE (Bottom Right) 🌟 */}
+        <div className="w-full flex justify-end mt-12 mb-8 pr-4 md:pr-8">
+          <style>
+            {`@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');`}
+          </style>
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-white text-4xl md:text-5xl antialiased drop-shadow-[0_0_10px_rgba(255,255,255,0.4)] hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.8)] transition-all duration-300 cursor-default" 
+            style={{ fontFamily: "'Alex Brush', cursive", fontWeight: 400 }}
+          >
+            Ganesh Veeraboina
+          </motion.div>
+        </div>
 
       </main>
 
