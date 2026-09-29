@@ -1,6 +1,6 @@
 <div align="center">
 
-![Header](https://capsule-render.vercel.app/api?type=waving&color=3B82F6&height=200&section=header&text=DevOps%20Portfolio&fontSize=50&fontAlignY=38&desc=Interactive%203D%20Resume%20%26%20Projects&descAlignY=58&descSize=20&fontColor=ffffff)
+![Header](https://capsule-render.vercel.app/api?type=waving&color=3B82F6&height=200&section=header&text=DevOps%20Portfolio&fontSize=50&fontAlignY=38&desc=Interactive%203D%20Resume%20and%20Projects&descAlignY=58&descSize=20&fontColor=ffffff)
 
 **A highly interactive, 3D-integrated, monochromatic single-page application (SPA) designed to showcase my skills, experience, and projects as an AWS DevOps Engineer.**
 
