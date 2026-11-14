@@ -39,18 +39,18 @@ const ArchNode = ({ step, activeStep }: any) => {
   const isPast = activeStep >= step.id;
 
   return (
-    <div className={`relative flex flex-col items-center justify-center p-2 md:p-2.5 rounded-xl border min-w-[75px] md:min-w-[90px] transition-all duration-300 z-10 bg-[#0a0a0a]
+    <div className={`relative flex flex-col items-center justify-center p-1.5 md:p-2 rounded-xl border min-w-[70px] md:min-w-[85px] transition-all duration-300 z-10 bg-[#0a0a0a]
       ${isActive ? 'border-white shadow-[0_0_15px_rgba(255,255,255,0.5)] scale-110 z-20' : isPast ? 'border-white/40 opacity-100' : 'border-white/10 opacity-40'}`}>
        
-       <div className={`mb-1.5 p-1.5 rounded-lg transition-colors duration-300 ${isActive ? 'bg-white/20 text-white shadow-[0_0_10px_rgba(255,255,255,0.3)]' : 'bg-white/5 text-white'}`}>
-          <step.icon size={18} strokeWidth={1.5} />
+       <div className={`mb-1 p-1 rounded-lg transition-colors duration-300 ${isActive ? 'bg-white/20 text-white shadow-[0_0_10px_rgba(255,255,255,0.3)]' : 'bg-white/5 text-white'}`}>
+          <step.icon size={16} strokeWidth={1.5} />
        </div>
        
-       <h4 className="text-[9px] md:text-[10px] font-bold text-center leading-tight whitespace-nowrap transition-colors duration-300 text-white">
+       <h4 className="text-[8px] md:text-[9px] font-bold text-center leading-tight whitespace-nowrap transition-colors duration-300 text-white">
          {step.name}
        </h4>
        
-       <p className="text-[7px] md:text-[8px] font-mono text-center mt-0.5 leading-tight transition-colors duration-300 text-white/80">
+       <p className="text-[6px] md:text-[7px] font-mono text-center mt-0.5 leading-tight transition-colors duration-300 text-white/80">
          {step.title}
        </p>
     </div>
@@ -58,29 +58,29 @@ const ArchNode = ({ step, activeStep }: any) => {
 };
 
 const ArchArrow = ({ active }: { active: boolean }) => (
-  <div className={`flex items-center justify-center px-0.5 md:px-1 transition-all duration-300 ${active ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] scale-110' : 'text-white/20'}`}>
-     <ArrowRight size={14} strokeWidth={2.5} />
+  <div className={`flex items-center justify-center px-0.5 transition-all duration-300 ${active ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] scale-110' : 'text-white/20'}`}>
+     <ArrowRight size={12} strokeWidth={2.5} />
   </div>
 );
 
 export default function App() {
   const sectionVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    hidden: { opacity: 0, y: 15 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
 
   const getIconForCategory = (category: string) => {
     const lowerCat = category.toLowerCase();
-    if (lowerCat.includes('cloud')) return <Cloud className="text-white transition-colors duration-300" size={26} />;
-    if (lowerCat.includes('container') || lowerCat.includes('orchestration')) return <Box className="text-white transition-colors duration-300" size={26} />;
-    if (lowerCat.includes('ci/cd') || lowerCat.includes('git')) return <GitBranch className="text-white transition-colors duration-300" size={26} />;
-    if (lowerCat.includes('iac') || lowerCat.includes('code')) return <Code2 className="text-white transition-colors duration-300" size={26} />;
-    if (lowerCat.includes('config')) return <Settings className="text-white transition-colors duration-300" size={26} />;
-    if (lowerCat.includes('os') || lowerCat.includes('script')) return <Terminal className="text-white transition-colors duration-300" size={26} />;
-    if (lowerCat.includes('artifacts') || lowerCat.includes('registry')) return <Package className="text-white transition-colors duration-300" size={26} />;
-    if (lowerCat.includes('quality') || lowerCat.includes('sec')) return <ShieldCheck className="text-white transition-colors duration-300" size={26} />;
-    if (lowerCat.includes('build') || lowerCat.includes('server')) return <Server className="text-white transition-colors duration-300" size={26} />;
-    return <Cpu className="text-white transition-colors duration-300" size={26} />;
+    if (lowerCat.includes('cloud')) return <Cloud className="text-white transition-colors duration-300" size={24} />;
+    if (lowerCat.includes('container') || lowerCat.includes('orchestration')) return <Box className="text-white transition-colors duration-300" size={24} />;
+    if (lowerCat.includes('ci/cd') || lowerCat.includes('git')) return <GitBranch className="text-white transition-colors duration-300" size={24} />;
+    if (lowerCat.includes('iac') || lowerCat.includes('code')) return <Code2 className="text-white transition-colors duration-300" size={24} />;
+    if (lowerCat.includes('config')) return <Settings className="text-white transition-colors duration-300" size={24} />;
+    if (lowerCat.includes('os') || lowerCat.includes('script')) return <Terminal className="text-white transition-colors duration-300" size={24} />;
+    if (lowerCat.includes('artifacts') || lowerCat.includes('registry')) return <Package className="text-white transition-colors duration-300" size={24} />;
+    if (lowerCat.includes('quality') || lowerCat.includes('sec')) return <ShieldCheck className="text-white transition-colors duration-300" size={24} />;
+    if (lowerCat.includes('build') || lowerCat.includes('server')) return <Server className="text-white transition-colors duration-300" size={24} />;
+    return <Cpu className="text-white transition-colors duration-300" size={24} />;
   };
 
   // 🌟 PIPELINE STEPS 🌟
@@ -122,13 +122,13 @@ export default function App() {
   const ArchZone = ({ title, steps, startIndex, endIndex }: any) => {
     const isZoneActive = activeStep >= startIndex && activeStep <= endIndex;
     return (
-      <div className={`relative border-2 border-dashed rounded-xl p-4 md:p-5 w-full transition-colors duration-500
+      <div className={`relative border-2 border-dashed rounded-xl p-3 md:p-4 w-full transition-colors duration-500
          ${isZoneActive ? 'border-white/40 bg-white/[0.03]' : 'border-white/10 bg-white/[0.01]'}`}>
-         <span className={`absolute -top-2.5 left-4 px-2.5 py-0.5 text-[8px] md:text-[9px] font-black uppercase tracking-widest rounded-full border transition-all duration-500 text-white
+         <span className={`absolute -top-2.5 left-4 px-2.5 py-0.5 text-[7px] md:text-[8px] font-black uppercase tracking-widest rounded-full border transition-all duration-500 text-white
             ${isZoneActive ? 'bg-black border-white shadow-[0_0_10px_rgba(255,255,255,0.5)] scale-105' : 'bg-black border-white/20'}`}>
             {title}
          </span>
-         <div className="flex flex-wrap items-center justify-center md:justify-start gap-y-3 pt-1">
+         <div className="flex flex-wrap items-center justify-center md:justify-start gap-y-2.5 pt-1">
             {steps.map((step: any, i: number) => (
                <React.Fragment key={step.id}>
                   <ArchNode step={step} activeStep={activeStep} />
@@ -145,8 +145,8 @@ export default function App() {
   const mouseY = useMotionValue(0);
   const springConfig = { damping: 30, stiffness: 100, mass: 1 };
   
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [20, -20]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-20, 20]), springConfig);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-15, 15]), springConfig);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -173,146 +173,146 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-black font-sans text-white selection:bg-white/30 selection:text-white overflow-x-hidden">
+    <div className="min-h-screen bg-black font-sans text-white selection:bg-white/30 selection:text-white overflow-x-hidden text-sm md:text-base">
       
-      {/* Navbar (Full Width) */}
+      {/* Navbar (Compact & Clean) */}
       <nav className="absolute top-0 w-full z-50">
-        <div className="w-full px-6 md:px-12 lg:px-20 py-6 flex justify-between items-center">
-          <div className="flex items-center gap-3 font-extrabold text-2xl tracking-tight text-white cursor-pointer">
-            <img src={logoImg} alt="Terminal Logo" className="w-10 h-10 invert opacity-90" />
+        <div className="w-full px-6 md:px-12 lg:px-20 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-2 font-extrabold text-xl tracking-tight text-white cursor-pointer">
+            <img src={logoImg} alt="Terminal Logo" className="w-8 h-8 invert opacity-90" />
             <span>Portfolio<span className="text-white">.</span></span>
           </div>
-          <div className="hidden lg:flex gap-4 text-sm font-bold text-white items-center">
-            <a href="#home" className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-5 py-2 rounded-full shadow-lg hover:bg-white/20 transition-all">Home</a>
-            <a href="#about" className="px-5 py-2 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 hover:backdrop-blur-md transition-all text-white">About</a>
-            <a href="#experience" className="px-5 py-2 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 hover:backdrop-blur-md transition-all text-white">Experience</a>
-            <a href="#certifications" className="px-5 py-2 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 hover:backdrop-blur-md transition-all text-white">Certifications</a>
-            <a href="#projects" className="px-5 py-2 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 hover:backdrop-blur-md transition-all text-white">Projects</a>
-            <a href="#education" className="px-5 py-2 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 hover:backdrop-blur-md transition-all text-white">Education</a>
-            <a href="#contact" className="px-5 py-2 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 hover:backdrop-blur-md transition-all text-white">Contact</a>
+          <div className="hidden lg:flex gap-3 text-xs font-bold text-white items-center">
+            <a href="#home" className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-1.5 rounded-full shadow-lg hover:bg-white/20 transition-all">Home</a>
+            <a href="#about" className="px-4 py-1.5 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 transition-all text-white">About</a>
+            <a href="#experience" className="px-4 py-1.5 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 transition-all text-white">Experience</a>
+            <a href="#certifications" className="px-4 py-1.5 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 transition-all text-white">Certifications</a>
+            <a href="#projects" className="px-4 py-1.5 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 transition-all text-white">Projects</a>
+            <a href="#education" className="px-4 py-1.5 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 transition-all text-white">Education</a>
+            <a href="#contact" className="px-4 py-1.5 rounded-full border border-transparent hover:border-white/20 hover:bg-white/5 transition-all text-white">Contact</a>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section (Full Width) */}
-      <section id="home" className="relative w-full min-h-screen flex items-center pt-20 overflow-hidden bg-black">
-        <div className="w-full px-6 md:px-12 lg:px-20 flex flex-col-reverse md:flex-row items-center justify-between gap-12 mt-10 md:mt-0">
-          <div className="w-full md:w-1/2 space-y-6 z-10 text-center md:text-left">
-            <motion.h2 initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="text-white font-bold text-2xl md:text-3xl">
+      {/* Hero Section (Optimized Size) */}
+      <section id="home" className="relative w-full min-h-[85vh] flex items-center pt-16 overflow-hidden bg-black">
+        <div className="w-full px-6 md:px-12 lg:px-20 flex flex-col-reverse md:flex-row items-center justify-between gap-8">
+          <div className="w-full md:w-1/2 space-y-4 z-10 text-center md:text-left">
+            <motion.h2 initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} className="text-white font-bold text-xl md:text-2xl">
               Hi There, I'm
             </motion.h2>
-            <motion.h1 initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[1.1]">
+            <motion.h1 initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4, delay: 0.1 }} className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.08]">
               Ganesh <br className="hidden md:block" /> Veeraboina
             </motion.h1>
-            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="text-2xl text-white font-semibold flex items-center justify-center md:justify-start gap-2">
+            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4, delay: 0.2 }} className="text-lg md:text-xl text-white font-semibold flex items-center justify-center md:justify-start gap-2">
               AWS DevOps Engineer <span className="text-white font-black">|</span>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex gap-4 justify-center md:justify-start pt-2">
-              <a href="https://linkedin.com/in/ganesh-veeraboina" target="_blank" rel="noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white p-3 rounded-full hover:scale-110 hover:bg-white/20 transition-all shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-              <a href="https://github.com/GANESHVEERABOINA" target="_blank" rel="noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white p-3 rounded-full hover:scale-110 hover:bg-white/20 transition-all shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }} className="flex gap-3 justify-center md:justify-start pt-1">
+              <a href="https://linkedin.com/in/ganesh-veeraboina" target="_blank" rel="noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white p-2.5 rounded-full hover:scale-110 hover:bg-white/20 transition-all shadow-md"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+              <a href="https://github.com/GANESHVEERABOINA" target="_blank" rel="noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white p-2.5 rounded-full hover:scale-110 hover:bg-white/20 transition-all shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
               </a>
-              <a href="mailto:ganeshveeraboina.pro@gmail.com" target="_blank" rel="noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white p-3 rounded-full hover:scale-110 hover:bg-white/20 transition-all shadow-lg"><Mail size={20} strokeWidth={2.5} /></a>
+              <a href="mailto:ganeshveeraboina.pro@gmail.com" target="_blank" rel="noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white p-2.5 rounded-full hover:scale-110 hover:bg-white/20 transition-all shadow-md"><Mail size={18} strokeWidth={2.5} /></a>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }} className="pt-4 flex flex-wrap gap-4 justify-center md:justify-start">
-              <a href="#projects" className="inline-flex items-center justify-center bg-white/10 backdrop-blur-lg border border-white/20 text-white font-semibold text-sm px-6 py-3 rounded-full hover:scale-105 hover:bg-white/20 transition-all shadow-[0_4px_30px_rgba(255,255,255,0.1)]">View My Projects</a>
-              <a href="./GANESH-RESUME-V3.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 bg-white/5 backdrop-blur-lg border border-white/10 text-white font-semibold text-sm px-6 py-3 rounded-full hover:scale-105 hover:bg-white/20 transition-all shadow-[0_4px_30px_rgba(255,255,255,0.1)]"><FileText size={18} />View My Resume</a>
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.4 }} className="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
+              <a href="#projects" className="inline-flex items-center justify-center bg-white/10 backdrop-blur-lg border border-white/20 text-white font-semibold text-xs px-5 py-2.5 rounded-full hover:scale-105 hover:bg-white/20 transition-all">View My Projects</a>
+              <a href="./GANESH-RESUME-V3.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-1.5 bg-white/5 backdrop-blur-lg border border-white/10 text-white font-semibold text-xs px-5 py-2.5 rounded-full hover:scale-105 hover:bg-white/20 transition-all"><FileText size={16} />View My Resume</a>
             </motion.div>
           </div>
-          <div className="w-full md:w-1/2 flex justify-center items-end relative h-[400px] md:h-[650px] z-10">
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-white/5 blur-[100px] rounded-full -z-10"></div>
-            <motion.img initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }} src={profileImg} alt={profileData.name} className="object-contain h-full drop-shadow-2xl" />
+          <div className="w-full md:w-1/2 flex justify-center items-end relative h-[320px] md:h-[500px] z-10">
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-white/5 blur-[80px] rounded-full -z-10"></div>
+            <motion.img initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} src={profileImg} alt={profileData.name} className="object-contain h-full drop-shadow-2xl" />
           </div>
         </div>
       </section>
 
-      {/* Main Content (Full Width) */}
-      <main className="w-full px-6 md:px-12 lg:px-20 py-20 space-y-32">
+      {/* Main Content (Reduced Spacing) */}
+      <main className="w-full px-6 md:px-12 lg:px-20 py-12 space-y-20">
         
-        {/* 🌟 REDESIGNED ABOUT ME (Terminal & Highlights) 🌟 */}
-        <motion.section id="about" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
-          <div className="flex flex-col items-center mb-12">
-            <h3 className="text-4xl font-black text-white">About Me</h3>
-            <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+        {/* ABOUT ME */}
+        <motion.section id="about" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-24">
+          <div className="flex flex-col items-center mb-8">
+            <h3 className="text-3xl font-black text-white">About Me</h3>
+            <div className="w-16 h-1 bg-white/80 mt-3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
 
-          <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
+          <div className="w-full max-w-5xl mx-auto flex flex-col lg:flex-row gap-6">
             {/* Terminal Window (Left) */}
-            <div className="flex-1 bg-[#050505] border border-white/20 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.8)] hover:border-white/40 transition-all duration-500 group">
-              <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex items-center gap-2">
+            <div className="flex-1 bg-[#050505] border border-white/20 rounded-xl overflow-hidden shadow-lg">
+              <div className="bg-white/5 border-b border-white/10 px-4 py-2.5 flex items-center gap-2">
                 <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-white/20 group-hover:bg-white/40 transition-colors"></div>
-                  <div className="w-3 h-3 rounded-full bg-white/20 group-hover:bg-white/40 transition-colors"></div>
-                  <div className="w-3 h-3 rounded-full bg-white/20 group-hover:bg-white/40 transition-colors"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-white/20"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-white/20"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-white/20"></div>
                 </div>
-                <p className="text-white/60 font-mono text-[10px] uppercase tracking-widest ml-4">guest@ganesh:~</p>
+                <p className="text-white/60 font-mono text-[9px] uppercase tracking-widest ml-3">guest@ganesh:~</p>
               </div>
-              <div className="p-6 md:p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-white font-black">❯</span>
-                  <span className="text-white font-mono text-sm border-b border-white/30">cat about_me.txt</span>
+              <div className="p-5 md:p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-white font-black text-xs">❯</span>
+                  <span className="text-white font-mono text-xs border-b border-white/30">cat about_me.txt</span>
                 </div>
-                <p className="text-white leading-relaxed text-base md:text-lg text-justify opacity-90">
+                <p className="text-white leading-relaxed text-sm md:text-base text-justify opacity-90">
                   {profileData.about}
                 </p>
-                <div className="mt-6 flex items-center gap-2">
-                  <span className="text-white font-black">❯</span>
-                  <span className="w-2 h-5 bg-white animate-pulse"></span>
+                <div className="mt-4 flex items-center gap-2">
+                  <span className="text-white font-black text-xs">❯</span>
+                  <span className="w-1.5 h-4 bg-white animate-pulse"></span>
                 </div>
               </div>
             </div>
 
             {/* Quick Highlights (Right) */}
-            <div className="lg:w-[40%] flex flex-col gap-4">
-              <div className="bg-white/5 border border-white/10 p-5 rounded-2xl flex items-start gap-4 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group">
-                <div className="bg-black p-3 rounded-xl border border-white/20 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] transition-all">
-                  <Cloud className="text-white" size={24} />
+            <div className="lg:w-[38%] flex flex-col gap-3">
+              <div className="bg-white/5 border border-white/10 p-4 rounded-xl flex items-start gap-3.5 hover:bg-white/10 transition-all">
+                <div className="bg-black p-2.5 rounded-lg border border-white/20">
+                  <Cloud className="text-white" size={20} />
                 </div>
                 <div>
-                  <h4 className="text-white font-black text-sm uppercase tracking-wider mb-1">Cloud Native</h4>
-                  <p className="text-white text-xs opacity-70 leading-relaxed">Designing scalable and highly available AWS infrastructures.</p>
+                  <h4 className="text-white font-black text-xs uppercase tracking-wider mb-0.5">Cloud Native</h4>
+                  <p className="text-white text-[11px] opacity-70 leading-normal">Designing scalable and highly available AWS infrastructures.</p>
                 </div>
               </div>
 
-              <div className="bg-white/5 border border-white/10 p-5 rounded-2xl flex items-start gap-4 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group">
-                <div className="bg-black p-3 rounded-xl border border-white/20 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] transition-all">
-                  <GitBranch className="text-white" size={24} />
+              <div className="bg-white/5 border border-white/10 p-4 rounded-xl flex items-start gap-3.5 hover:bg-white/10 transition-all">
+                <div className="bg-black p-2.5 rounded-lg border border-white/20">
+                  <GitBranch className="text-white" size={20} />
                 </div>
                 <div>
-                  <h4 className="text-white font-black text-sm uppercase tracking-wider mb-1">CI/CD Pipelines</h4>
-                  <p className="text-white text-xs opacity-70 leading-relaxed">Automating software delivery with seamless integration & deployment.</p>
+                  <h4 className="text-white font-black text-xs uppercase tracking-wider mb-0.5">CI/CD Pipelines</h4>
+                  <p className="text-white text-[11px] opacity-70 leading-normal">Automating software delivery with seamless integration & deployment.</p>
                 </div>
               </div>
 
-              <div className="bg-white/5 border border-white/10 p-5 rounded-2xl flex items-start gap-4 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group">
-                <div className="bg-black p-3 rounded-xl border border-white/20 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] transition-all">
-                  <ShieldCheck className="text-white" size={24} />
+              <div className="bg-white/5 border border-white/10 p-4 rounded-xl flex items-start gap-3.5 hover:bg-white/10 transition-all">
+                <div className="bg-black p-2.5 rounded-lg border border-white/20">
+                  <ShieldCheck className="text-white" size={20} />
                 </div>
                 <div>
-                  <h4 className="text-white font-black text-sm uppercase tracking-wider mb-1">DevSecOps</h4>
-                  <p className="text-white text-xs opacity-70 leading-relaxed">Embedding security practices within automated workflows.</p>
+                  <h4 className="text-white font-black text-xs uppercase tracking-wider mb-0.5">DevSecOps</h4>
+                  <p className="text-white text-[11px] opacity-70 leading-normal">Embedding security practices within automated workflows.</p>
                 </div>
               </div>
             </div>
           </div>
         </motion.section>
 
-        {/* 🌟 FULLY INTERACTIVE 3D SKILL NETWORK MAP 🌟 */}
-        <motion.section id="skills" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28 z-20">
-          <div className="flex flex-col items-center mb-16">
-            <h3 className="text-4xl font-black text-white">My Arsenal</h3>
-            <p className="text-white mt-2 font-mono text-sm tracking-wide">Interactive DevOps Network (Move Mouse)</p>
-            <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+        {/* 🌟 MY ARSENAL (3D SKILL NETWORK WITH DEVSECOPS SECURITY LAYER) 🌟 */}
+        <motion.section id="skills" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-24 z-20">
+          <div className="flex flex-col items-center mb-10">
+            <h3 className="text-3xl font-black text-white">My Arsenal</h3>
+            <p className="text-white/80 mt-1.5 font-mono text-xs tracking-wide">Interactive DevOps & Security Network (Move Mouse)</p>
+            <div className="w-16 h-1 bg-white/80 mt-3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
 
           {/* DESKTOP 3D INTERACTIVE VIEW */}
           <div 
-             className="hidden lg:flex relative w-full max-w-[1000px] h-[700px] mx-auto my-10 items-center justify-center [perspective:1500px]"
+             className="hidden lg:flex relative w-full max-w-[900px] h-[580px] mx-auto my-6 items-center justify-center [perspective:1500px]"
              onMouseMove={handleMouseMove}
              onMouseLeave={handleMouseLeave}
           >
              <motion.div 
-                className="relative w-[800px] h-[800px]"
+                className="relative w-[700px] h-[700px]"
                 style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
              >
                 <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ transform: "translateZ(0px)" }}>
@@ -324,28 +324,35 @@ export default function App() {
                             key={`line-${i}`}
                             x1="50%" y1="50%" x2={`${node.x}%`} y2={`${node.y}%`}
                             stroke={isHovered ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)"} 
-                            strokeWidth={isHovered ? 4 : 2} 
-                            strokeDasharray={isHovered ? "none" : "6,6"}
+                            strokeWidth={isHovered ? 3 : 1.5} 
+                            strokeDasharray={isHovered ? "none" : "5,5"}
                             initial={{ pathLength: 0 }}
                             whileInView={{ pathLength: 1 }}
-                            transition={{ duration: 1.5, delay: i * 0.1 }}
+                            transition={{ duration: 1.2, delay: i * 0.08 }}
                             style={{ opacity: isDimmed ? 0.2 : 1, transition: 'all 0.3s ease' }}
                          />
                       )
                    })}
                 </svg>
 
+                {/* 🌟 CENTRAL CORE WITH DEVSECOPS SECURITY LAYER 🌟 */}
                 <div 
                    className="absolute top-1/2 left-1/2 flex flex-col items-center transition-all duration-300 pointer-events-none"
-                   style={{ transform: "translate(-50%, -50%) translateZ(120px)", transformStyle: "preserve-3d" }}
+                   style={{ transform: "translate(-50%, -50%) translateZ(100px)", transformStyle: "preserve-3d" }}
                 >
-                   <div className="absolute inset-0 bg-white/10 blur-[60px] rounded-full w-48 h-48 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></div>
-                   <div className={`w-32 h-32 bg-[#050505] border-[3px] rounded-full flex items-center justify-center transition-all duration-500 z-10 relative
-                      ${hoveredNode !== null ? 'border-white shadow-[0_0_60px_rgba(255,255,255,0.8)] scale-110' : 'border-white/50 shadow-[0_0_40px_rgba(255,255,255,0.3)]'}`}>
-                      <Cpu size={56} className="text-white animate-pulse" />
+                   {/* Outer DevSecOps Security Ring */}
+                   <div className="absolute inset-0 rounded-full border border-dashed border-white/50 animate-spin w-40 h-40 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" style={{ animationDuration: '20s' }}></div>
+                   
+                   <div className="absolute inset-0 bg-white/10 blur-[50px] rounded-full w-40 h-40 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></div>
+                   
+                   <div className={`w-28 h-28 bg-[#050505] border-[3px] rounded-full flex items-center justify-center transition-all duration-500 z-10 relative
+                      ${hoveredNode !== null ? 'border-white shadow-[0_0_50px_rgba(255,255,255,0.8)] scale-105' : 'border-white/50 shadow-[0_0_30px_rgba(255,255,255,0.3)]'}`}>
+                      <Cpu size={46} className="text-white animate-pulse" />
                    </div>
-                   <div className="absolute top-[140px] bg-black/90 px-6 py-2 border border-white/50 rounded-full z-10 shadow-[0_15px_30px_rgba(0,0,0,0.8)]">
-                      <span className="text-sm font-black text-white tracking-widest uppercase">DevOps Core</span>
+
+                   <div className="absolute top-[122px] bg-black/90 px-4 py-1.5 border border-white/40 rounded-full z-20 shadow-xl flex items-center gap-1.5">
+                      <ShieldCheck size={13} className="text-white" />
+                      <span className="text-[10px] font-black text-white tracking-widest uppercase">DevSecOps Security Layer</span>
                    </div>
                 </div>
 
@@ -357,8 +364,8 @@ export default function App() {
                      <motion.div
                         key={`node-${i}`}
                         initial={{ opacity: 0, scale: 0, z: 0 }}
-                        whileInView={{ opacity: 1, scale: 1, z: i % 2 === 0 ? 80 : 40 }}
-                        whileHover={{ scale: 1.15, z: 180, rotateX: 10, rotateY: -10 }}
+                        whileInView={{ opacity: 1, scale: 1, z: i % 2 === 0 ? 60 : 30 }}
+                        whileHover={{ scale: 1.12, z: 140, rotateX: 8, rotateY: -8 }}
                         onHoverStart={() => setHoveredNode(i)}
                         onHoverEnd={() => setHoveredNode(null)}
                         transition={{ duration: 0.3 }}
@@ -366,32 +373,24 @@ export default function App() {
                            left: `${node.x}%`, top: `${node.y}%`, 
                            x: "-50%", y: "-50%", transformStyle: "preserve-3d"
                         }}
-                        className={`absolute z-20 w-[220px] bg-black border rounded-2xl p-5 flex flex-col items-center transition-all duration-300 cursor-pointer
-                           ${isHovered ? 'border-white shadow-[0_30px_60px_rgba(255,255,255,0.5),inset_0_2px_20px_rgba(255,255,255,0.2)]' : 'border-white/20 shadow-[0_20px_40px_rgba(0,0,0,0.8)]'}
+                        className={`absolute z-20 w-[190px] bg-black border rounded-xl p-4 flex flex-col items-center transition-all duration-300 cursor-pointer
+                           ${isHovered ? 'border-white shadow-[0_20px_40px_rgba(255,255,255,0.4)]' : 'border-white/20 shadow-md'}
                            ${isDimmed ? 'opacity-30 scale-95' : 'opacity-100'}`}
                      >
-                        <div className={`mb-4 p-3.5 rounded-xl border transition-all duration-300
-                           ${isHovered ? 'bg-white/20 border-white shadow-[0_0_20px_rgba(255,255,255,0.8)]' : 'bg-white/5 border-white/30'}`} 
-                           style={{ transform: "translateZ(30px)" }}>
-                           {/* Icon color handled manually since getIconForCategory uses text-white */}
-                           {node.category.includes('Cloud') ? <Cloud size={26} color="white" /> : 
-                            node.category.includes('Containers') ? <Box size={26} color="white" /> : 
-                            node.category.includes('CI/CD') ? <GitBranch size={26} color="white" /> : 
-                            node.category.includes('IaC') ? <Code2 size={26} color="white" /> : 
-                            node.category.includes('Quality') ? <ShieldCheck size={26} color="white" /> : 
-                            node.category.includes('Artifacts') ? <Package size={26} color="white" /> : 
-                            node.category.includes('OS') ? <Terminal size={26} color="white" /> : 
-                            <Server size={26} color="white" />}
+                        <div className={`mb-3 p-2.5 rounded-lg border transition-all duration-300
+                           ${isHovered ? 'bg-white/20 border-white shadow-[0_0_15px_rgba(255,255,255,0.8)]' : 'bg-white/5 border-white/30'}`} 
+                           style={{ transform: "translateZ(20px)" }}>
+                           {getIconForCategory(node.category)}
                         </div>
                         
-                        <h4 className="text-white font-extrabold text-[12px] text-center mb-3 leading-tight uppercase tracking-wider h-6 flex items-center justify-center drop-shadow-xl" style={{ transform: "translateZ(40px)" }}>
+                        <h4 className="text-white font-extrabold text-[11px] text-center mb-2 leading-tight uppercase tracking-wider h-5 flex items-center justify-center" style={{ transform: "translateZ(30px)" }}>
                            {node.category}
                         </h4>
                         
-                        <div className="flex flex-wrap justify-center gap-1.5 w-full" style={{ transform: "translateZ(20px)" }}>
+                        <div className="flex flex-wrap justify-center gap-1 w-full" style={{ transform: "translateZ(10px)" }}>
                            {node.technologies.map((tech: string, j: number) => (
-                              <span key={j} className={`text-[10px] font-bold bg-black border px-2 py-1.5 rounded-md transition-colors duration-300
-                                 ${isHovered ? 'border-white text-white shadow-[0_0_10px_rgba(255,255,255,0.4)]' : 'border-white/30 text-white shadow-[0_4px_8px_rgba(0,0,0,0.6)]'}`}>
+                              <span key={j} className={`text-[9px] font-bold bg-black border px-1.5 py-1 rounded transition-colors duration-300
+                                 ${isHovered ? 'border-white text-white shadow-[0_0_8px_rgba(255,255,255,0.4)]' : 'border-white/30 text-white'}`}>
                                  {tech}
                               </span>
                            ))}
@@ -403,32 +402,31 @@ export default function App() {
           </div>
 
           {/* MOBILE 3D ACCORDION TREE */}
-          <div className="lg:hidden relative w-full px-4 mx-auto mt-8">
-             <div className="absolute left-8 top-0 bottom-0 w-[3px] bg-gradient-to-b from-white/50 via-white/20 to-transparent z-0"></div>
+          <div className="lg:hidden relative w-full px-4 mx-auto mt-6">
+             <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-white/50 via-white/20 to-transparent z-0"></div>
              
-             <div className="flex flex-col gap-6 relative z-10 w-full">
+             <div className="flex flex-col gap-4 relative z-10 w-full">
                 {mySkillsData.map((node, i) => (
                    <motion.div 
                       key={`mob-node-${i}`}
-                      initial={{ opacity: 0, x: -50 }}
+                      initial={{ opacity: 0, x: -30 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
-                      className="relative pl-12 w-full cursor-pointer"
+                      transition={{ delay: i * 0.08 }}
+                      className="relative pl-10 w-full"
                    >
-                      <div className="absolute left-4 top-7 w-3.5 h-3.5 bg-black border-[3px] border-white rounded-full -translate-x-1/2 shadow-[0_0_15px_rgba(255,255,255,0.9)]"></div>
-                      <div className="absolute left-4 top-[1.85rem] w-8 h-[2px] bg-white/40"></div>
+                      <div className="absolute left-3 top-6 w-3 h-3 bg-black border-2 border-white rounded-full -translate-x-1/2"></div>
+                      <div className="absolute left-3 top-[1.4rem] w-6 h-[2px] bg-white/40"></div>
                       
-                      <div className="bg-black border border-white/20 rounded-2xl p-5 shadow-lg w-full relative z-10 active:border-white transition-colors">
-                         <div className="flex items-center gap-4 mb-4">
-                            <div className="bg-white/10 p-2.5 rounded-xl border border-white/20">
+                      <div className="bg-black border border-white/20 rounded-xl p-4 shadow-md w-full relative z-10">
+                         <div className="flex items-center gap-3 mb-3">
+                            <div className="bg-white/10 p-2 rounded-lg border border-white/20">
                                {getIconForCategory(node.category)}
                             </div>
-                            <h4 className="text-white font-extrabold text-[13px] uppercase tracking-widest leading-tight">{node.category}</h4>
+                            <h4 className="text-white font-extrabold text-xs uppercase tracking-widest leading-tight">{node.category}</h4>
                          </div>
-                         <div className="flex flex-wrap gap-2">
+                         <div className="flex flex-wrap gap-1.5">
                             {node.technologies.map((tech: string, j: number) => (
-                               <span key={j} className="text-[11px] font-bold bg-black border border-white/30 text-white px-2.5 py-1.5 rounded-lg shadow-inner">
+                               <span key={j} className="text-[10px] font-bold bg-black border border-white/30 text-white px-2 py-1 rounded">
                                   {tech}
                                </span>
                             ))}
@@ -440,41 +438,41 @@ export default function App() {
           </div>
         </motion.section>
 
-        {/* Experience Section */}
-        <motion.section id="experience" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
-          <div className="flex flex-col items-center mb-12">
-            <h3 className="text-4xl font-black text-white">Experience</h3>
-            <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+        {/* EXPERIENCE */}
+        <motion.section id="experience" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-24">
+          <div className="flex flex-col items-center mb-8">
+            <h3 className="text-3xl font-black text-white">Experience</h3>
+            <div className="w-16 h-1 bg-white/80 mt-3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="grid grid-cols-1 gap-8 w-full max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 gap-6 w-full max-w-4xl mx-auto">
             {experienceData.map((exp, idx) => (
-              <div key={idx} className="relative bg-[#050505] border border-white/10 shadow-2xl rounded-3xl p-8 hover:border-white/30 transition-all duration-500">
-                <div className="flex flex-col md:flex-row gap-6 mb-8 items-start md:items-center">
+              <div key={idx} className="relative bg-[#050505] border border-white/10 shadow-xl rounded-2xl p-6 hover:border-white/30 transition-all duration-300">
+                <div className="flex flex-col md:flex-row gap-4 mb-6 items-start md:items-center">
                   <div className="shrink-0 hidden sm:flex">
-                    <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center p-2 border border-white/20 shadow-inner">
+                    <div className="w-14 h-14 bg-white/5 rounded-xl flex items-center justify-center p-2 border border-white/20">
                       {/* @ts-ignore */}
-                      {exp.logo ? <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain rounded-xl" /> : <Briefcase className="text-white" size={32} />}
+                      {exp.logo ? <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain rounded-lg" /> : <Briefcase className="text-white" size={26} />}
                     </div>
                   </div>
-                  <div className="flex-1 flex flex-col md:flex-row md:justify-between md:items-center w-full gap-4">
+                  <div className="flex-1 flex flex-col md:flex-row md:justify-between md:items-center w-full gap-3">
                     <div>
-                      <h4 className="text-2xl font-black text-white">{exp.role}</h4>
-                      <p className="text-white/80 font-bold text-lg mt-1">{exp.company}</p>
+                      <h4 className="text-xl font-black text-white">{exp.role}</h4>
+                      <p className="text-white/80 font-bold text-sm mt-0.5">{exp.company}</p>
                     </div>
-                    <div className="text-white font-mono text-sm bg-white/5 px-4 py-2 rounded-xl border border-white/20 w-fit">
+                    <div className="text-white font-mono text-xs bg-white/5 px-3 py-1.5 rounded-lg border border-white/20 w-fit">
                       <p>{exp.duration}</p>
                       <p className="text-white/60 mt-0.5">{exp.location}</p>
                     </div>
                   </div>
                 </div>
-                <ul className="list-disc list-outside ml-5 space-y-3 text-white/90 mb-8 text-lg">
+                <ul className="list-disc list-outside ml-4 space-y-2 text-white/90 mb-6 text-sm md:text-base">
                   {exp.responsibilities.map((resp, i) => (
-                    <li key={i} className="pl-2 leading-relaxed">{resp}</li>
+                    <li key={i} className="pl-1.5 leading-relaxed">{resp}</li>
                   ))}
                 </ul>
-                <div className="flex flex-wrap gap-2 pt-6 border-t border-white/10">
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10">
                   {exp.technologies.map((tech, i) => (
-                    <span key={i} className="text-sm font-bold bg-white/10 border border-white/20 text-white px-4 py-1.5 rounded-full shadow-[0_0_5px_rgba(255,255,255,0.05)]">{tech}</span>
+                    <span key={i} className="text-xs font-bold bg-white/10 border border-white/20 text-white px-3 py-1 rounded-full">{tech}</span>
                   ))}
                 </div>
               </div>
@@ -482,28 +480,28 @@ export default function App() {
           </div>
         </motion.section>
 
-        {/* 🌟 ENTERPRISE ARCHITECTURE PIPELINE 🌟 */}
-        <motion.section id="workflow" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
-          <div className="flex flex-col items-center mb-10">
-            <h3 className="text-3xl md:text-4xl font-black text-white text-center uppercase tracking-wider">
+        {/* ENTERPRISE CI/CD ARCHITECTURE */}
+        <motion.section id="workflow" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-24">
+          <div className="flex flex-col items-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-black text-white text-center uppercase tracking-wider">
               Enterprise CI/CD Architecture
             </h3>
-            <p className="text-white mt-2 font-mono text-sm tracking-wide">Live End-to-End Deployment Flow</p>
-            <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+            <p className="text-white/80 mt-1.5 font-mono text-xs tracking-wide">Live End-to-End Deployment Flow</p>
+            <div className="w-16 h-1 bg-white/80 mt-3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
 
-          <div className="relative w-full max-w-7xl mx-auto bg-[#030303] border border-white/10 shadow-2xl rounded-[2rem] p-5 lg:p-8 overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+          <div className="relative w-full max-w-6xl mx-auto bg-[#030303] border border-white/10 shadow-xl rounded-2xl p-4 lg:p-6 overflow-hidden">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
             
-            <div className="absolute top-5 left-5 md:top-6 md:left-6 flex items-center gap-3 bg-black/80 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-md z-20 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-               <div className="w-3 h-3 bg-white rounded-full animate-pulse shadow-[0_0_12px_rgba(255,255,255,1)]"></div>
-               <span className="text-[10px] md:text-xs font-mono text-white">SYSTEM STATUS: <span className="text-white font-bold ml-1">{allSteps[activeStep].name.toUpperCase()} ACTIVE</span></span>
+            <div className="absolute top-4 left-4 flex items-center gap-2.5 bg-black/80 px-3 py-1.5 rounded-lg border border-white/10 backdrop-blur-md z-20">
+               <div className="w-2.5 h-2.5 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,1)]"></div>
+               <span className="text-[9px] md:text-[10px] font-mono text-white">SYSTEM STATUS: <span className="text-white font-bold ml-1">{allSteps[activeStep].name.toUpperCase()} ACTIVE</span></span>
             </div>
 
-            <div className="mt-14 flex flex-col gap-6 relative z-10">
+            <div className="mt-12 flex flex-col gap-4 relative z-10">
                <ArchZone title="Continuous Integration Pipeline" steps={allSteps.slice(0, 9)} startIndex={0} endIndex={8} />
 
-               <div className="flex flex-col xl:flex-row gap-6 w-full">
+               <div className="flex flex-col xl:flex-row gap-4 w-full">
                   <div className="xl:w-[40%]">
                      <ArchZone title="Infrastructure & Configuration" steps={allSteps.slice(9, 12)} startIndex={9} endIndex={11} />
                   </div>
@@ -517,60 +515,56 @@ export default function App() {
           </div>
         </motion.section>
 
-        {/* Certifications Section */}
-        <motion.section id="certifications" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
-          <div className="flex flex-col items-center mb-12">
-            <h3 className="text-4xl font-black text-white">Certifications</h3>
-            <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+        {/* CERTIFICATIONS */}
+        <motion.section id="certifications" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-24">
+          <div className="flex flex-col items-center mb-8">
+            <h3 className="text-3xl font-black text-white">Certifications</h3>
+            <div className="w-16 h-1 bg-white/80 mt-3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-5xl mx-auto">
             {/* @ts-ignore */}
             {certificationsData.map((cert, idx) => (
-              <div key={idx} className="group relative bg-[#050505] border border-white/10 shadow-2xl rounded-3xl p-6 flex flex-col items-center text-center overflow-hidden hover:border-white/30 hover:-translate-y-2 transition-all duration-500">
-                <div className="absolute top-4 right-4 bg-white/5 border border-white/10 text-white text-[10px] font-mono px-2 py-1 rounded-full backdrop-blur-md">{cert.date}</div>
-                <div className="relative w-20 h-20 mb-5 mt-3 group-hover:scale-105 transition-transform duration-500">
-                  <div className="absolute inset-0 bg-white/10 blur-[20px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="relative w-full h-full bg-white/5 border border-white/20 rounded-full flex justify-center items-center shadow-inner overflow-hidden">
+              <div key={idx} className="group relative bg-[#050505] border border-white/10 shadow-xl rounded-2xl p-5 flex flex-col items-center text-center overflow-hidden hover:border-white/30 transition-all duration-300">
+                <div className="absolute top-3 right-3 bg-white/5 border border-white/10 text-white text-[9px] font-mono px-2 py-0.5 rounded-full backdrop-blur-md">{cert.date}</div>
+                <div className="relative w-16 h-16 mb-4 mt-2">
+                  <div className="relative w-full h-full bg-white/5 border border-white/20 rounded-full flex justify-center items-center overflow-hidden shadow-inner">
                     {/* @ts-ignore */}
-                    <img src={cert.image || "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"} alt={cert.name} className="w-full h-full object-cover rounded-full p-2" />
+                    <img src={cert.image || "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"} alt={cert.name} className="w-full h-full object-cover rounded-full p-1.5" />
                   </div>
                 </div>
-                <h4 className="text-white font-bold text-base leading-snug mb-2">{cert.name}</h4>
-                <p className="text-white/60 text-[10px] uppercase tracking-widest font-semibold mb-6">{cert.issuer}</p>
+                <h4 className="text-white font-bold text-sm leading-snug mb-1.5">{cert.name}</h4>
+                <p className="text-white/60 text-[9px] uppercase tracking-widest font-semibold mb-4">{cert.issuer}</p>
                 {/* @ts-ignore */}
-                <a href={cert.link || "#"} target="_blank" rel="noreferrer" className="mt-auto w-full flex justify-center items-center gap-2 text-xs font-bold text-white bg-white/5 border border-white/10 hover:border-white/40 hover:bg-white/10 rounded-xl px-4 py-2.5 transition-all duration-300 shadow-[0_0_10px_rgba(255,255,255,0.05)] group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                  View Credential <ExternalLink size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <a href={cert.link || "#"} target="_blank" rel="noreferrer" className="mt-auto w-full flex justify-center items-center gap-1.5 text-xs font-bold text-white bg-white/5 border border-white/10 hover:border-white/40 rounded-lg px-3 py-2 transition-all">
+                  View Credential <ExternalLink size={12} />
                 </a>
               </div>
             ))}
           </div>
         </motion.section>
 
-        {/* 🌟 NEW PROJECTS SECTION (Hacker / Glass Cards) 🌟 */}
-        <motion.section id="projects" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
-          <div className="flex flex-col items-center mb-12">
-            <h3 className="text-4xl font-black text-white">Featured Projects</h3>
-            <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+        {/* FEATURED PROJECTS */}
+        <motion.section id="projects" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-24">
+          <div className="flex flex-col items-center mb-8">
+            <h3 className="text-3xl font-black text-white">Featured Projects</h3>
+            <div className="w-16 h-1 bg-white/80 mt-3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl mx-auto">
             {projectsData.map((project, idx) => (
-              <div key={idx} className="group relative bg-[#050505] border border-white/10 p-8 rounded-3xl hover:border-white/40 transition-all duration-500 overflow-hidden shadow-xl hover:shadow-[0_10px_40px_rgba(255,255,255,0.1)] hover:-translate-y-1">
-                
-                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                
-                <div className="flex justify-between items-start mb-6 relative z-10">
-                  <h4 className="text-2xl font-black text-white group-hover:scale-[1.02] origin-left transition-transform duration-300">{project.title}</h4>
-                  <a href={project.githubUrl} target="_blank" rel="noreferrer" className="text-white/50 hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+              <div key={idx} className="group relative bg-[#050505] border border-white/10 p-6 rounded-2xl hover:border-white/30 transition-all duration-300 shadow-xl flex flex-col">
+                <div className="flex justify-between items-start mb-4">
+                  <h4 className="text-xl font-black text-white">{project.title}</h4>
+                  <a href={project.githubUrl} target="_blank" rel="noreferrer" className="text-white/50 hover:text-white transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
                   </a>
                 </div>
                 
-                <p className="text-white/80 leading-relaxed mb-8 relative z-10">{project.description}</p>
+                <p className="text-white/80 text-sm leading-relaxed mb-6">{project.description}</p>
                 
-                <div className="flex flex-wrap gap-2 mt-auto relative z-10">
+                <div className="flex flex-wrap gap-1.5 mt-auto">
                   {project.technologies.map((tech, i) => (
-                    <span key={i} className="text-xs font-bold bg-white/5 border border-white/20 text-white px-3 py-1.5 rounded-full">
+                    <span key={i} className="text-[11px] font-bold bg-white/5 border border-white/20 text-white px-2.5 py-1 rounded-full">
                       {tech}
                     </span>
                   ))}
@@ -580,28 +574,28 @@ export default function App() {
           </div>
         </motion.section>
 
-        {/* Selected Repositories (Adjusted Style) */}
-        <motion.section id="repositories" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
-          <div className="flex flex-col items-center mb-12">
-            <h3 className="text-4xl font-black text-white text-center">Selected Repositories</h3>
-            <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+        {/* SELECTED REPOSITORIES */}
+        <motion.section id="repositories" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-24">
+          <div className="flex flex-col items-center mb-8">
+            <h3 className="text-3xl font-black text-white text-center">Selected Repositories</h3>
+            <div className="w-16 h-1 bg-white/80 mt-3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-5xl mx-auto">
             {repositoriesData.map((repo, idx) => (
-              <div key={idx} className="group relative bg-[#050505] border-l-4 border-l-white/20 border-y border-r border-white/10 p-6 rounded-r-2xl hover:border-l-white transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-                <div className="flex justify-between items-start mb-3">
-                  <div className="flex items-center gap-2 text-white font-bold text-lg">
-                    <BookOpen size={20} className="text-white/70 group-hover:text-white transition-colors" />
+              <div key={idx} className="group relative bg-[#050505] border-l-4 border-l-white/20 border-y border-r border-white/10 p-5 rounded-r-xl hover:border-l-white transition-all shadow-md">
+                <div className="flex justify-between items-start mb-2.5">
+                  <div className="flex items-center gap-2 text-white font-bold text-base">
+                    <BookOpen size={18} className="text-white/70" />
                     {repo.title}
                   </div>
                   <a href={repo.githubUrl} target="_blank" rel="noreferrer" className="text-white/40 hover:text-white transition-colors">
-                    <ExternalLink size={18} />
+                    <ExternalLink size={16} />
                   </a>
                 </div>
-                <p className="text-white/70 mb-5 text-sm leading-relaxed">{repo.description}</p>
-                <div className="flex flex-wrap gap-2">
+                <p className="text-white/70 mb-4 text-xs leading-relaxed">{repo.description}</p>
+                <div className="flex flex-wrap gap-1.5">
                   {repo.technologies.map((tech, i) => (
-                    <span key={i} className="text-[10px] font-mono font-bold text-white bg-white/10 px-2.5 py-1 rounded">
+                    <span key={i} className="text-[9px] font-mono font-bold text-white bg-white/10 px-2 py-0.5 rounded">
                       {tech}
                     </span>
                   ))}
@@ -611,76 +605,66 @@ export default function App() {
           </div>
         </motion.section>
 
-        {/* 🌟 NEW EDUCATION SECTION (Vertical Timeline) 🌟 */}
-        <motion.section id="education" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
-          <div className="flex flex-col items-center mb-16">
-            <h3 className="text-4xl font-black text-white">Education</h3>
-            <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+        {/* EDUCATION SECTION */}
+        <motion.section id="education" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-24">
+          <div className="flex flex-col items-center mb-10">
+            <h3 className="text-3xl font-black text-white">Education</h3>
+            <div className="w-16 h-1 bg-white/80 mt-3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
           
-          <div className="relative border-l-2 border-white/20 ml-4 md:ml-8 space-y-12 pb-4 max-w-5xl mx-auto">
+          <div className="relative border-l-2 border-white/20 ml-4 md:ml-6 space-y-8 pb-2 max-w-4xl mx-auto">
             {educationData.map((edu, idx) => (
-              <div key={idx} className="relative pl-8 md:pl-12 group">
-                
-                {/* Glowing Dot on Timeline */}
-                <div className="absolute -left-[9px] top-1.5 w-4 h-4 bg-black border-2 border-white/50 rounded-full group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,1)] transition-all duration-500"></div>
+              <div key={idx} className="relative pl-6 md:pl-10 group">
+                <div className="absolute -left-[8px] top-1.5 w-3.5 h-3.5 bg-black border-2 border-white/50 rounded-full group-hover:border-white transition-all"></div>
 
-                {/* Content Box */}
-                <div className="bg-[#050505] border border-white/10 p-6 md:p-8 rounded-2xl hover:border-white/30 transition-all duration-500 shadow-lg hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                    <div className="flex items-center gap-4">
-                      {/* 🌟 UNIVERSITY LOGO INTEGRATION 🌟 */}
+                <div className="bg-[#050505] border border-white/10 p-5 md:p-6 rounded-xl hover:border-white/30 transition-all shadow-md">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 mb-3">
+                    <div className="flex items-center gap-3.5">
                       {/* @ts-ignore */}
                       {edu.logo && (
-                        <div className="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-xl border border-white/20 p-1 flex items-center justify-center shrink-0 group-hover:border-white/50 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all">
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-lg border border-white/20 p-1 flex items-center justify-center shrink-0">
                           {/* @ts-ignore */}
-                          <img src={edu.logo} alt={edu.institution} className="w-full h-full object-contain rounded-lg" />
+                          <img src={edu.logo} alt={edu.institution} className="w-full h-full object-contain rounded" />
                         </div>
                       )}
                       <div>
-                        <h4 className="text-xl md:text-2xl font-black text-white tracking-wide">{edu.degree}</h4>
-                        <p className="text-white/80 font-bold mt-1 uppercase text-xs md:text-sm tracking-widest">{edu.institution}</p>
+                        <h4 className="text-lg md:text-xl font-black text-white">{edu.degree}</h4>
+                        <p className="text-white/80 font-bold mt-0.5 uppercase text-[11px] md:text-xs tracking-widest">{edu.institution}</p>
                       </div>
                     </div>
-                    <span className="px-4 py-1.5 border border-white/20 bg-white/5 text-white text-xs font-mono rounded-full whitespace-nowrap">
+                    <span className="px-3 py-1 border border-white/20 bg-white/5 text-white text-[11px] font-mono rounded-full whitespace-nowrap">
                       {edu.duration}
                     </span>
                   </div>
-                  {edu.details && <p className="text-white/70 text-sm md:text-base leading-relaxed mt-4 ml-[4rem] md:ml-[4.5rem]">{edu.details}</p>}
+                  {edu.details && <p className="text-white/70 text-xs md:text-sm leading-relaxed mt-3">{edu.details}</p>}
                 </div>
               </div>
             ))}
           </div>
         </motion.section>
 
-        {/* 🌟 NEW CURRENTLY LEARNING (Active Processes) 🌟 */}
-        <motion.section id="learning" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-28">
-          <div className="flex flex-col items-center mb-12">
-            <h3 className="text-4xl font-black text-white">Currently Learning</h3>
-            <div className="w-20 h-1.5 bg-white/80 mt-4 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+        {/* CURRENTLY LEARNING */}
+        <motion.section id="learning" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="scroll-mt-24">
+          <div className="flex flex-col items-center mb-8">
+            <h3 className="text-3xl font-black text-white">Currently Learning</h3>
+            <div className="w-16 h-1 bg-white/80 mt-3 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-5xl mx-auto">
             {learningData.map((item, idx) => (
-              <div key={idx} className="group relative bg-[#0a0a0a] border border-white/10 p-5 rounded-2xl overflow-hidden hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-500">
-                
-                {/* Scanning line effect */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-[1.5s] ease-in-out"></div>
-
-                <div className="flex items-center gap-4 relative z-10">
-                  <div className="relative flex items-center justify-center w-12 h-12 bg-black border border-white/20 rounded-xl group-hover:border-white/50 transition-colors">
-                    {/* Rotating border to simulate processing */}
-                    <div className="absolute inset-0 rounded-xl border border-transparent border-t-white/60 animate-spin" style={{ animationDuration: '3s' }}></div>
-                    <Terminal size={20} className="text-white" />
+              <div key={idx} className="group relative bg-[#0a0a0a] border border-white/10 p-4 rounded-xl overflow-hidden hover:border-white/30 transition-all">
+                <div className="flex items-center gap-3 relative z-10">
+                  <div className="relative flex items-center justify-center w-10 h-10 bg-black border border-white/20 rounded-lg">
+                    <Terminal size={18} className="text-white" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-white text-sm font-bold tracking-wide leading-snug">{item}</h4>
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="relative flex h-2 w-2">
+                    <h4 className="text-white text-xs font-bold tracking-wide leading-snug">{item}</h4>
+                    <div className="flex items-center gap-2 mt-1.5">
+                      <span className="relative flex h-1.5 w-1.5">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
                       </span>
-                      <span className="text-white/60 text-[10px] font-mono uppercase tracking-widest">Processing...</span>
+                      <span className="text-white/60 text-[9px] font-mono uppercase tracking-widest">Processing...</span>
                     </div>
                   </div>
                 </div>
@@ -692,22 +676,22 @@ export default function App() {
       </main>
 
       {/* Footer / Contact */}
-      <footer id="contact" className="bg-black py-16 mt-10 relative">
+      <footer id="contact" className="bg-black py-12 mt-8 relative">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
         <div className="w-full px-6 md:px-12 lg:px-20 text-center flex flex-col items-center">
-          <h3 className="text-4xl font-black text-white mb-6">Let's Connect</h3>
-          <p className="text-white/80 mb-10 text-lg">
+          <h3 className="text-3xl font-black text-white mb-4">Let's Connect</h3>
+          <p className="text-white/80 mb-8 text-sm md:text-base max-w-xl">
             Currently seeking entry-level DevOps & Cloud opportunities. Let's build something great together.
           </p>
-          <div className="flex justify-center gap-6 mb-16">
-            <a href="mailto:ganeshveeraboina.pro@gmail.com" className="bg-[#0a0a0a] border border-white/20 text-white hover:bg-white/10 hover:border-white/50 hover:scale-110 p-4 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all"><Mail size={24} /></a>
-            <a href="https://github.com/GANESHVEERABOINA" className="bg-[#0a0a0a] border border-white/20 text-white hover:bg-white/10 hover:border-white/50 hover:scale-110 p-4 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all">
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+          <div className="flex justify-center gap-5 mb-10">
+            <a href="mailto:ganeshveeraboina.pro@gmail.com" className="bg-[#0a0a0a] border border-white/20 text-white hover:bg-white/10 hover:border-white/50 hover:scale-110 p-3 rounded-full transition-all shadow-md"><Mail size={20} /></a>
+            <a href="https://github.com/GANESHVEERABOINA" className="bg-[#0a0a0a] border border-white/20 text-white hover:bg-white/10 hover:border-white/50 hover:scale-110 p-3 rounded-full transition-all shadow-md">
+               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
             </a>
-            <a href="https://linkedin.com/in/ganesh-veeraboina" className="bg-[#0a0a0a] border border-white/20 text-white hover:bg-white/10 hover:border-white/50 hover:scale-110 p-4 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            <a href="https://linkedin.com/in/ganesh-veeraboina" className="bg-[#0a0a0a] border border-white/20 text-white hover:bg-white/10 hover:border-white/50 hover:scale-110 p-3 rounded-full transition-all shadow-md"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
           </div>
 
-          <p className="text-white font-medium font-mono text-sm opacity-50">© {new Date().getFullYear()} Ganesh Veeraboina. All rights reserved.</p>
+          <p className="text-white font-medium font-mono text-xs opacity-50">© {new Date().getFullYear()} Ganesh Veeraboina. All rights reserved.</p>
         </div>
       </footer>
     </div>
